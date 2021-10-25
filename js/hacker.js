@@ -101,7 +101,7 @@ $(document).ready(function() {
         let singleStoryContainer = $("<article>").addClass("single-story").appendTo($(".stories-container"));
         let story = $("<p>").addClass("story").appendTo(singleStoryContainer);
         var html = '';
-        html = ' <a href="'+res.url+'" id="article_a">'+res.title+'</a>'; //res.url = url of link, res.title = title of liink
+        html = ' <a href="'+res.url+'" id="article_a" target="_blank" >'+res.title+'</a>'; //res.url = url of link, res.title = title of liink
         story.html(`${counter}` + '. ' + `${html}` + ' ' + 'by' + ' ' +  '<span class ="user-name-test">' + `${name}` + "</span>");
       }
     }
