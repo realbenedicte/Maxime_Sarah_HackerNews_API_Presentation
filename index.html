@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> Hacker news test </title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/hacker.js"></script>
+</head>
+<body>
+  <div class="page-container">
+    <main>
+      <div class="display">
+        <div id="topStoriesButton">
+          <button id="buttonHacker" type="button"> Get Top Stories</button>
+        </div>
+        <div class="stories-container">
+        </div>
+
+    <div class = "topStoriesCodeExample">
+  <code>
+    <pre>
+      <i>// define the URL of json you want to access</i>
+      <i>// this URL can be found from the Hacker News API</i>
+      <span class = 'function-code'>const</span> url = "https://hacker-news.firebaseio.com/v0/topstories.json"; //json of the topstories
+
+      <i>//request the JSON file with the jquery function: </i>
+      <span class = 'code-blue'>$.getJSON</span>(url, iterateIds)
+        .fail(function() {
+          console.log("error");
+        });
+
+      <i>// create the callback function used in $.getJSON()</i>
+      <i>// this function limits the stories from the top stories to only 10 </i>
+      <i>// and then iterates over each top story and displays them on our webpage </i>
+      <span class = 'function-code'> function </span><span class = 'code-blue'>iterateIds</span>(results) {
+        var slicedResult = results.slice(0, 10);
+        slicedResult.map(secondURLRequest);
+
+        <i> //make a request ($.getJSON()) for each id and display each of them </i>
+       <span class = 'function-code'> function</span><span class = 'code-blue'> secondURLRequest</span>(id){
+          let urlById = `https://hacker-news.firebaseio.com/v0/item/${id}.json`;
+          <span class = 'code-blue'>$.getJSON</span>(urlById, displayResultsById) //<i>makes a request with this url</i>
+        }
+
+        <span class = 'function-code'> function</span> <span class = 'code-blue'>displayResultsById</span>(res) {
+          <i>//write some code to display on your webpage</i>
+          <i>//eg. the name of the author of the article could be accessed by: res.by</i>
+        }
+      }<i>//end of iterateIds()</i>
+   </pre>
+  </code>
+    </div>
+</div>
+    </main>
+</body>
+</div>
+</html>
+<code>
