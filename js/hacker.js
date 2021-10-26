@@ -18,16 +18,22 @@
 //
 const url = "https://hacker-news.firebaseio.com/v0/topstories.json";//json of the topstories
 //define how many stories you want to print out
-let numberOfStories = 10;
+let numberOfStories = 50;
 
 //
 // $( document ).ready()
 //
 //wait for the document to load, when it does do all of our stuff
 $(document).ready(function() {
+  $("#ourExample").hide();
   $(".stories-container").hide();
   $("#buttonHacker").on("click", displayTopStories);
 
+  $( "#exampleButton" ).click(function() {
+      $(".homePage").hide();
+      $("#ourExample").show();
+      console.log('test')
+  });
   //
   //displayTopStories()
   //
@@ -60,7 +66,7 @@ $(document).ready(function() {
       var slicedResult = results.slice(0, numberOfStories);
 
       //map(callbackFn)
-      slicedResult.map(test);
+      slicedResult.map(secondURLRequest);
       //Function that is called for every element of arr.
       //Each time callbackFn executes, the returned value is added to newArray.
 
@@ -79,7 +85,7 @@ $(document).ready(function() {
       //   }
       // )
 
-      function test(id){
+      function secondURLRequest(id){
         let urlById = `https://hacker-news.firebaseio.com/v0/item/${id}.json`;
         $.getJSON(urlById, displayResultsById) //makes a request with this url
         //make a request for each id
@@ -95,8 +101,10 @@ $(document).ready(function() {
 
       let counter = 0;//counter so we can number the items in the array
       function displayResultsById(res) {
-        // console.log(res);
+      // console.log(res);
+
         counter++;
+      // if (res.title.includes('Facebook')){ // a way of filtering the data
         let name = res.by; // name of author
         let singleStoryContainer = $("<article>").addClass("single-story").appendTo($(".stories-container"));
         let story = $("<p>").addClass("story").appendTo(singleStoryContainer);
@@ -104,6 +112,7 @@ $(document).ready(function() {
         html = ' <a href="'+res.url+'" id="article_a" target="_blank" >'+res.title+'</a>'; //res.url = url of link, res.title = title of liink
         story.html(`${counter}` + '. ' + `${html}` + ' ' + 'by' + ' ' +  '<span class ="user-name-test">' + `${name}` + "</span>");
       }
+    // }
     }
   }
 }); //document ready

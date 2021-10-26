@@ -11,13 +11,28 @@
 <body>
   <div class="page-container">
     <main>
+      <div class = "homePage">
+        <div class = "title">
+          <p id = "main-title">Hacker News API Presentation</p>
+          <p>By: Maxime and Sarah</p>
+          <div>
+        <div id="PresentationSlides">
+          <a href = '' id="buttonSlides" type="button"> Presentation Slides</a>
+        </div>
+        <div id="ourExampleButtonContainer">
+          <button id="exampleButton" type="button"> API Use Example</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div id = "ourExample">
+
       <div class="display">
         <div id="topStoriesButton">
           <button id="buttonHacker" type="button"> Get Top Stories</button>
         </div>
         <div class="stories-container">
         </div>
-
     <div class = "topStoriesCodeExample">
   <code>
     <pre>
@@ -36,7 +51,7 @@
       <i>// and then iterates over each top story and displays them on our webpage </i>
       <span class = 'function-code'> function </span><span class = 'code-blue'>iterateIds</span>(results) {
         var slicedResult = results.slice(0, 10);
-        slicedResult.map(secondURLRequest);
+        slicedResult.map(secondURLRequest);   <i>// mapping makes it so we can define how many values we want </i>
 
         <i> //make a request ($.getJSON()) for each id and display each of them </i>
        <span class = 'function-code'> function</span><span class = 'code-blue'> secondURLRequest</span>(id){
@@ -45,8 +60,13 @@
         }
 
         <span class = 'function-code'> function</span> <span class = 'code-blue'>displayResultsById</span>(res) {
-          <i>//write some code to display on your webpage</i>
+          <i>//write some code to display the results on your webpage</i>
+          <i>//in my example I use the item properties as seen in the API of: </i>
+          <i>//url -> link to external site of the story</i>
+          <i>//title -> title of the story</i>
+          <i>//by -> username of the user who created the story</i>
           <i>//eg. the name of the author of the article could be accessed by: res.by</i>
+          <i>//if you wanted to filter this data you could use if statements eg: // if (res.title.includes('Facebook'))</i>
         }
       }<i>//end of iterateIds()</i>
    </pre>
@@ -54,6 +74,7 @@
     </div>
 </div>
     </main>
+  </div>
 </body>
 </div>
 </html>
